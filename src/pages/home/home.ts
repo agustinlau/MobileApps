@@ -11,4 +11,19 @@ export class HomePage {
 
   }
 
+  items = [
+    'Runner Warm-up',
+    'Easy Stretching',
+    'Around the House',
+    '15 Intense Minutes',
+  ];
+
+  itemSelected(item: string) {
+    console.log("Selected Item", item);
+  }
+
+  addWorkout() {
+
+  }
+
 }

@@ -16,7 +16,7 @@
         <ion-option value="aerobic">Aerobic</ion-option>
         <ion-option value="strength">Strength</ion-option>
         <ion-option value="balance">Balance</ion-option>
-        <ion-option value="flexibility">flexibility</ion-option>
+        <ion-option value="flexibility">Flexibility</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -40,7 +40,7 @@
     </ion-item>
   </ion-list>
 
-  <button ion-button outline>Search</button>
+  <button ion-button outline [navPush]="searchResultsPage">Search</button>
 
 
 

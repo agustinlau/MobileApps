@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Search Workout
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item *ngFor="let exercise of exercises">
+    <ion-label>{{exercise}}</ion-label>
+    <ion-checkbox> color="dark"</ion-checkbox>
+  </ion-item>
+
+  <button ion-button outline>Add to Workout</button>
+  <!--<button ion-button outline (click)="addToWorkout()">Add to Workout</button>-->
+</ion-content>
