@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Search Workout
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Workout Type</ion-label>
+      <ion-select [(ngModel)]="workoutType">
+        <ion-option value="cardio">Cardio</ion-option>
+        <ion-option value="aerobic">Aerobic</ion-option>
+        <ion-option value="strength">Strength</ion-option>
+        <ion-option value="balance">Balance</ion-option>
+        <ion-option value="flexibility">flexibility</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Equipment</ion-label>
+      <ion-select [(ngModel)]="equipment" multiple="true">
+        <ion-option value="weights">Weights</ion-option>
+        <ion-option value="benches">Benches</ion-option>
+        <ion-option value="dumbbells">Dumbbells</ion-option>
+        <ion-option value="medicineBalls">Medicine Balls</ion-option>
+        <ion-option value="jumpRope">Jump Rope</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Duration</ion-label>
+      <ion-select [(ngModel)]="duration">
+        <ion-option value="fifteen">15 mins</ion-option>
+        <ion-option value="thirty">30 mins</ion-option>
+        <ion-option value="fortyfive">45 mins</ion-option>
+        <ion-option value="sixty">60 mins</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button outline>Search</button>
+
+
+
+</ion-content>
