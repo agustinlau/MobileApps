@@ -11,7 +11,7 @@ export class HomePage {
 
   }
 
-  items = [
+  private items = [
     'Runner Warm-up',
     'Easy Stretching',
     'Around the House',
@@ -20,6 +20,10 @@ export class HomePage {
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
+  }
+
+  getItems() {
+    return this.items;
   }
 
   addWorkout() {

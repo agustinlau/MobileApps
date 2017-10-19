@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-// import {AddToWorkoutModal} from "./add-to-workout-modal"
+import { NavController, ModalController } from 'ionic-angular';
+import { AddToWorkoutModal } from "./add-to-workout-modal"
 
 @Component({
   selector: 'page-search-results',
@@ -8,7 +8,7 @@ import { NavController } from 'ionic-angular';
 })
 export class SearchResultsPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   }
 
@@ -19,9 +19,9 @@ export class SearchResultsPage {
     '25 rope jumps',
   ];
 
-  // addToWorkout() {
-  //   let modal = this.modalCtrl.create(AddToWorkoutModal);
-  //   modal.present();
-  // }
+  addToWorkout() {
+    let modal = this.modalCtrl.create(AddToWorkoutModal);
+    modal.present();
+  }
 
 }

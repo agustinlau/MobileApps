@@ -1,6 +1,8 @@
 {
   "name": "Lift",
-  "app_id": "25dab291",
+  "app_id": "102dbd1c",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

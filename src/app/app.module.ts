@@ -11,7 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchResultsPage } from "../pages/search-results/search-results";
-import {AddToWorkoutModal} from "../pages/search-results/add-to-workout-modal";
+import { AddToWorkoutModal } from "../pages/search-results/add-to-workout-modal";
+import { GlobalService } from "../global-service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,6 @@ import {AddToWorkoutModal} from "../pages/search-results/add-to-workout-modal";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    // IonicPageModule.forChild(SearchResultsPage)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,6 +41,7 @@ import {AddToWorkoutModal} from "../pages/search-results/add-to-workout-modal";
   providers: [
     StatusBar,
     SplashScreen,
+    [GlobalService],
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
