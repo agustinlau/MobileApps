@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>My Workouts</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="addWorkout()">
+      <button ion-button icon-only [navPush]="createWorkoutPage">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -11,8 +11,8 @@
 
 <ion-content padding>
   <ion-list inset>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
-      {{ item }}
+    <button ion-item *ngFor="let key of workoutKeys" (click)="itemSelected(workouts[key].name)">
+      {{ workouts[key].name }}
     </button>
   </ion-list>
 </ion-content>

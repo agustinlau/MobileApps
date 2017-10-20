@@ -1,10 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Add Exercises
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
 
-  <ion-item *ngFor="let item of items">
-    <ion-label>{{item}}</ion-label>
-    <ion-checkbox> color="dark"</ion-checkbox>
-  </ion-item>
+  <!--<ion-item *ngFor="let key of workoutKeys">-->
+    <!--<ion-label>{{workouts[key].name}}</ion-label>-->
+    <!--<ion-checkbox> color="dark"</ion-checkbox>-->
+  <!--</ion-item>-->
 
-  <button ion-button outline (click)="closeModal()">Add</button>
+  <ion-list radio-group>
+    <ion-list-header>
+      Workouts
+    </ion-list-header>
 
+    <ion-item *ngFor="let key of workoutKeys">
+      <ion-label>{{workouts[key].name}}</ion-label>
+      <ion-radio (ionSelect)="changeSelected(key)"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <div text-center>
+    <button ion-button outline (click)="addToWorkout(selectedKey, exercisesSelected)">Add</button>
+  </div>
 </ion-content>

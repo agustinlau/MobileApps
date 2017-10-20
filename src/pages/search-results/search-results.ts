@@ -8,6 +8,8 @@ import { AddToWorkoutModal } from "./add-to-workout-modal"
 })
 export class SearchResultsPage {
 
+  public exercisesSelected;
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 
   }
@@ -19,9 +21,21 @@ export class SearchResultsPage {
     '25 rope jumps',
   ];
 
-  addToWorkout() {
-    let modal = this.modalCtrl.create(AddToWorkoutModal);
-    modal.present();
+
+  changeSelected(selected) {
+    this.exercisesSelected = selected;
   }
+
+
+  addToWorkout(exercisesSelected) {
+    this.navCtrl.push(AddToWorkoutModal, {
+      exercises: exercisesSelected
+    });
+  }
+
+  // addToWorkout() {
+  //   let modal = this.modalCtrl.create(AddToWorkoutModal);
+  //   modal.present();
+  // }
 
 }

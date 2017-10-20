@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import * as firebase from 'firebase';
+import {CreateWorkoutPage} from "../create-workout/create-workout";
 
 @Component({
   selector: 'page-home',
@@ -7,27 +9,52 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  // Contains all the workouts to populate HomePage
+  public workouts;
+
+  // Contains the UUIDs needed to access each workout
+  public workoutKeys;
+
+  createWorkoutPage = CreateWorkoutPage;
   constructor(public navCtrl: NavController) {
 
   }
 
-  private items = [
-    'Runner Warm-up',
-    'Easy Stretching',
-    'Around the House',
-    '15 Intense Minutes',
-  ];
+  ionViewDidLoad() {
+    const pollRef: firebase.database.Reference = firebase.database().ref('/workouts');
+    pollRef.on('value', pollSnapshot => {
+      var newPost = pollSnapshot.val();
+      console.log(newPost)
+      this.workouts = newPost;
+      this.workoutKeys = Object.keys(newPost);
+
+      // Iterates over each poll
+      // pollSnapshot.forEach(child => {
+      //   console.log(child.key + ": " + child.val().name);
+      //   return false;
+      // });
+    });
+  }
+
+
+
+  // private items = [
+  //   'Runner Warm-up',
+  //   'Easy Stretching',
+  //   'Around the House',
+  //   '15 Intense Minutes',
+  // ];
 
   itemSelected(item: string) {
     console.log("Selected Item", item);
   }
 
-  getItems() {
-    return this.items;
-  }
+  // getItems() {
+  //   return this.items;
+  // }
 
-  addWorkout() {
-
-  }
+  // addWorkout() {
+  //
+  // }
 
 }

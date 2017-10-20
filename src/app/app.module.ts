@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchResultsPage } from "../pages/search-results/search-results";
 import { AddToWorkoutModal } from "../pages/search-results/add-to-workout-modal";
 import { GlobalService } from "../global-service";
+import { CreateWorkoutPage } from "../pages/create-workout/create-workout"
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GlobalService } from "../global-service";
     HomePage,
     TabsPage,
     SearchResultsPage,
-    AddToWorkoutModal
+    AddToWorkoutModal,
+    CreateWorkoutPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { GlobalService } from "../global-service";
     HomePage,
     TabsPage,
     SearchResultsPage,
-    AddToWorkoutModal
+    AddToWorkoutModal,
+    CreateWorkoutPage
   ],
   providers: [
     StatusBar,

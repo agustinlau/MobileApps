@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+import * as firebase from 'firebase';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -18,5 +20,14 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+    var config = {
+      apiKey: "AIzaSyBbqagMX_DhyrY4d_UAfVUkOf-qKKaDeII",
+      authDomain: "mobile-app-cdf0b.firebaseapp.com",
+      databaseURL: "https://mobile-app-cdf0b.firebaseio.com",
+      projectId: "mobile-app-cdf0b",
+      storageBucket: "mobile-app-cdf0b.appspot.com",
+      messagingSenderId: "191577108085"
+    };
+    firebase.initializeApp(config);
   }
 }
