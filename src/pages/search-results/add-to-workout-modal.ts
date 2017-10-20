@@ -35,8 +35,8 @@ export class AddToWorkoutModal {
 
   // Updates the Firebase with the new workout
   addToWorkout(uuid: string, exercises: string[]) {
-    // var uuid = this.guid();
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
+
     pollRef.update({
       exercises: exercises
     })
@@ -45,6 +45,10 @@ export class AddToWorkoutModal {
 
   changeSelected(selected) {
     this.selectedKey = selected;
+  }
+
+  cancel() {
+    this.navCtrl.pop();
   }
 
   items = this.globalService.getItems();

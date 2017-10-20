@@ -41,7 +41,7 @@
   </ion-list>
 
   <div text-center>
-    <button ion-button outline [navPush]="searchResultsPage">Search</button>
+    <button ion-button outline (click)="search(workoutType, equipment, duration)">Search</button>
   </div>
 
 
