@@ -26,7 +26,9 @@ export class CreateWorkoutPage {
     pollRef.update({
       id: uuid,
       name: name
-    })
+    });
+    // Go back to home screen
+    this.navCtrl.pop();
   }
 
   // Generates a random uuid

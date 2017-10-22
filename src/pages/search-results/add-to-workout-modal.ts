@@ -33,13 +33,13 @@ export class AddToWorkoutModal {
     });
   }
 
-  // Updates the Firebase with the new workout
+  // Updates the Firebase with the new exercises
   addToWorkout(uuid: string, exercises: string[]) {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
 
     pollRef.update({
       exercises: exercises
-    })
+    });
     this.navCtrl.pop();
   }
 

@@ -8,9 +8,9 @@ import { AddToWorkoutModal } from "./add-to-workout-modal"
 })
 export class SearchResultsPage {
 
-  public exercisesSelected;
+  // public exercisesSelected;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController) {
 
   }
 
@@ -21,21 +21,34 @@ export class SearchResultsPage {
     '25 rope jumps',
   ];
 
+  public exercisesSelected = [
 
-  changeSelected(selected) {
-    this.exercisesSelected = selected;
+  ];
+
+  changeSelected(exercise) {
+    if (this.exercisesSelected.indexOf(exercise) < 0) {
+      this.exercisesSelected.push(exercise);
+    } else {
+      var index = this.exercisesSelected.indexOf(exercise);
+      console.log(index);
+      if (index > -1) {
+        this.exercisesSelected.splice(index, 1);
+      }
+    }
+
+    console.log(this.exercisesSelected);
   }
 
 
-  addToWorkout(exercisesSelected) {
+  addToWorkout() {
     this.navCtrl.push(AddToWorkoutModal, {
-      exercises: exercisesSelected
+      exercises: this.exercisesSelected
     });
   }
 
-  // addToWorkout() {
-  //   let modal = this.modalCtrl.create(AddToWorkoutModal);
-  //   modal.present();
+  // // Disables constant reloading
+  // customTrackBy(index: number, obj: any): any {
+  //   return index;
   // }
 
 }
