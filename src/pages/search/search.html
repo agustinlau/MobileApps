@@ -30,18 +30,17 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>Duration</ion-label>
-      <ion-select [(ngModel)]="duration">
-        <ion-option value="fifteen">15 mins</ion-option>
-        <ion-option value="thirty">30 mins</ion-option>
-        <ion-option value="fortyfive">45 mins</ion-option>
-        <ion-option value="sixty">60 mins</ion-option>
+      <ion-label>Difficulty</ion-label>
+      <ion-select [(ngModel)]="difficulty">
+        <ion-option value="beginner">Beginner</ion-option>
+        <ion-option value="intermediate">Intermediate</ion-option>
+        <ion-option value="advanced">Advanced</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
 
   <div text-center>
-    <button ion-button outline (click)="search(workoutType, equipment, duration)">Search</button>
+    <button ion-button outline (click)="search(workoutType, equipment, difficulty)">Search</button>
   </div>
 
 

@@ -15,10 +15,9 @@ export class SearchResultsPage {
   }
 
   exercises = [
-    '15 crunches',
-    '20 pushups',
-    '5 bench presses',
-    '25 rope jumps',
+    'Hammer Curls',
+    'Bicep curls (12 reps, 3 sets)',
+    'Rope jumps (35 seconds)',
   ];
 
   public exercisesSelected = [

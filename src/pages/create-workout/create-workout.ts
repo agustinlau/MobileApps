@@ -42,6 +42,27 @@ export class CreateWorkoutPage {
       s4() + '-' + s4() + s4() + s4();
   }
 
+  options = [
+    "",
+    // "",
+  ];
+
+  addOption() {
+    this.options.push("");
+  }
+
+  deleteOption(option) {
+    var index = this.options.indexOf(option);
+    if (index > -1) {
+      this.options.splice(index, 1)
+    }
+  }
+
+  // Disables constant reloading
+  customTrackBy(index: number, obj: any): any {
+    return index;
+  }
+
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad CreateWorkoutPage');
   // }

@@ -14,8 +14,8 @@ export class SearchPage {
 
   }
 
-  search(workoutType: string, equipment: string, duration: string) {
-    if (workoutType == null && equipment == null && duration == null) {
+  search(workoutType: string, equipment: string, difficulty: string) {
+    if (workoutType == null && equipment == null && difficulty == null) {
       let toast = this.toastCtrl.create({
         message: "Must fill out at least some search criteria",
         duration: 3000
