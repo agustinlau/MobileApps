@@ -22,6 +22,9 @@ export class SearchPage {
       });
       toast.present();
     } else {
+
+      // TODO: Make api call with given inputs and push the results to the next page
+
       this.navCtrl.push(SearchResultsPage);
     }
   }
