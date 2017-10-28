@@ -8,8 +8,6 @@ import { AddToWorkoutModal } from "./add-to-workout-modal"
 })
 export class SearchResultsPage {
 
-  // public exercisesSelected;
-
   constructor(public navCtrl: NavController) {
 
   }
