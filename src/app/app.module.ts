@@ -14,6 +14,8 @@ import { SearchResultsPage } from "../pages/search-results/search-results";
 import { AddToWorkoutModal } from "../pages/search-results/add-to-workout-modal";
 import { GlobalService } from "../global-service";
 import { CreateWorkoutPage } from "../pages/create-workout/create-workout"
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CreateWorkoutPage } from "../pages/create-workout/create-workout"
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

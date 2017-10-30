@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { AddToWorkoutModal } from "./add-to-workout-modal"
 
 @Component({
@@ -8,21 +8,25 @@ import { AddToWorkoutModal } from "./add-to-workout-modal"
 })
 export class SearchResultsPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
-  exercises = [
-    'Hammer Curls',
-    'Bicep curls (12 reps, 3 sets)',
-    'Rope jumps (35 seconds)',
-  ];
+  public exercisesResults = this.navParams.get('exercises');
+
+  // exercises = [
+  //   'Hammer Curls',
+  //   'Bicep curls (12 reps, 3 sets)',
+  //   'Rope jumps (35 seconds)',
+  // ];
+
 
   public exercisesSelected = [
 
   ];
 
   changeSelected(exercise) {
+    // console.log(this.exercisesSelected);
     if (this.exercisesSelected.indexOf(exercise) < 0) {
       this.exercisesSelected.push(exercise);
     } else {
@@ -38,6 +42,7 @@ export class SearchResultsPage {
 
 
   addToWorkout() {
+
     this.navCtrl.push(AddToWorkoutModal, {
       exercises: this.exercisesSelected
     });
