@@ -2,17 +2,31 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { AddToWorkoutModal } from "./add-to-workout-modal"
 
+import {Http, RequestOptions, Headers} from "@angular/http";
+import { HttpParams, HttpClient, HttpClientModule} from '@angular/common/http';
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'page-search-results',
   templateUrl: 'search-results.html'
 })
 export class SearchResultsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
 
   }
 
   public exercisesResults = this.navParams.get('exercises');
+  public exerciseKeys = this.navParams.get('exerciseKeys');
+
+  // getDescriptions(exerciseKeys) {
+  //
+  //   this.httpClient.get('http://mas-server.herokuapp.com/exercises').subscribe(data => {
+  //
+  //   });
+  // }
+
+
 
   // exercises = [
   //   'Hammer Curls',

@@ -17,6 +17,7 @@ export class SearchPage {
   searchResultsPage = SearchResultsPage;
   exercisesList: any;
   exercises = [];
+  exerciseKeys = [];
 
 
 
@@ -51,19 +52,20 @@ export class SearchPage {
       // https://www.reddit.com/r/gifs/top/.json
 
 
-      this.httpClient.get('https://mas-server.herokuapp.com/exercises' + exercisesString)
+      this.httpClient.get('http://mas-server.herokuapp.com/exercises' + exercisesString)
           .subscribe(data => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         this.exercisesList = data;
         for (var i = 0; i < this.exercisesList.length; i++) {
           // console.log(this.exercisesList[i]['Name']);
           if (this.exercisesList[i]['Require_Spotter'] == 0) {
             this.exercises.push(this.exercisesList[i]['Name']);
+            this.exerciseKeys.push(this.exercisesList[i]['Workout_Id']);
           }
         }
       });
 
-      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises});
+      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, exerciseKeys: this.exerciseKeys});
     }
   }
 

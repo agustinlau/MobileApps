@@ -11,6 +11,14 @@
   <ion-item *ngFor="let exercise of exercisesResults;">
     <ion-label>{{exercise}}</ion-label>
     <ion-checkbox (ionChange)="changeSelected(exercise)"> color="dark"</ion-checkbox>
+    <ion-card>
+      <ion-card-header>
+        Header
+      </ion-card-header>
+      <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      </ion-card-content>
+    </ion-card>
   </ion-item>
 
   <!--<ion-list radio-group>-->
