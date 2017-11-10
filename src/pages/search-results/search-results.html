@@ -8,10 +8,16 @@
 
 <ion-content padding>
 
-  <ion-item *ngFor="let exercise of exercisesResults;">
-    <ion-label>{{exercise}}</ion-label>
-    <ion-checkbox (ionChange)="changeSelected(exercise)"> color="dark"</ion-checkbox>
-  </ion-item>
+  <ion-list inset>
+    <button ion-item *ngFor="let name of exercisesResults" (click)="goToDescription(name)">
+      {{name}}
+    </button>
+  </ion-list>
+
+  <!--<ion-item *ngFor="let exercise of exercisesResults;">-->
+    <!--<ion-label>{{exercise}}</ion-label>-->
+    <!--<ion-checkbox (ionChange)="changeSelected(exercise)"> color="dark"</ion-checkbox>-->
+  <!--</ion-item>-->
 
   <!--<ion-list radio-group>-->
     <!--<ion-item *ngFor="let exercise of exercises">-->
@@ -20,7 +26,7 @@
     <!--</ion-item>-->
   <!--</ion-list>-->
 
-  <div text-center>
-    <button ion-button outline (click)="addToWorkout()">Add to Workout</button>
-  </div>
+  <!--<div text-center>-->
+    <!--<button ion-button outline (click)="addToWorkout()">Add to Workout</button>-->
+  <!--</div>-->
 </ion-content>

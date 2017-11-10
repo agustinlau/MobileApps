@@ -1,5 +1,5 @@
 import {Component, Injectable} from '@angular/core';
-import {NavController, ViewController, NavParams} from 'ionic-angular';
+import {NavController, ViewController, NavParams, ToastController} from 'ionic-angular';
 import { GlobalService } from "../../global-service";
 import {SearchResultsPage} from "./search-results";
 
@@ -18,10 +18,10 @@ export class AddToWorkoutModal {
 
   public selectedKey;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, private globalService: GlobalService, public params: NavParams) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public toastCtrl: ToastController, public params: NavParams) {
   }
 
-  public exercisesSelected = this.params.get('exercises');
+  public exerciseSelected = this.params.get('exercise');
 
   ionViewDidLoad() {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts');
@@ -34,13 +34,18 @@ export class AddToWorkoutModal {
   }
 
   // Updates the Firebase with the new exercises
-  addToWorkout(uuid: string, exercises: string[]) {
+  addToWorkout(uuid: string, exercise: string) {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
 
     pollRef.update({
-      exercises: exercises
+      exercises: exercise
     });
     this.navCtrl.pop();
+    let toast = this.toastCtrl.create({
+      message: "Added!",
+      duration: 3000
+    });
+    toast.present();
   }
 
   changeSelected(selected) {
@@ -51,7 +56,7 @@ export class AddToWorkoutModal {
     this.navCtrl.pop();
   }
 
-  items = this.globalService.getItems();
+  // items = this.globalService.getItems();
 
 
 

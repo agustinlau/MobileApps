@@ -10,9 +10,6 @@ import 'rxjs/add/operator/map';
   selector: 'page-search',
   templateUrl: 'search.html',
 })
-// @NgModule({
-//   imports: [ HttpClientModule]
-// })
 export class SearchPage {
   searchResultsPage = SearchResultsPage;
   exercisesList: any;
@@ -21,11 +18,14 @@ export class SearchPage {
 
 
 
+
+
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: Http, public httpClient: HttpClient) {
 
   }
 
   search(workoutType: string, equipment: string, difficulty: string) {
+    this.exercises = [];
     if (workoutType == null && equipment == null && difficulty == null) {
       let toast = this.toastCtrl.create({
         message: "Must fill out at least some search criteria",
@@ -51,6 +51,8 @@ export class SearchPage {
       // 'http://swapi.co/api/films'
       // https://www.reddit.com/r/gifs/top/.json
 
+      type Exercise = { exerciseId: number; exerciseName: string; exerciseDescription: string; };
+      let exerciseMap : Map<string, Exercise> = new Map<string, Exercise>();
 
       this.httpClient.get('http://mas-server.herokuapp.com/exercises' + exercisesString)
           .subscribe(data => {
@@ -61,11 +63,14 @@ export class SearchPage {
           if (this.exercisesList[i]['Require_Spotter'] == 0) {
             this.exercises.push(this.exercisesList[i]['Name']);
             this.exerciseKeys.push(this.exercisesList[i]['Workout_Id']);
+
+            var current : Exercise = {exerciseId: this.exercisesList[i]['Workout_Id'], exerciseName: this.exercisesList[i]['Name'], exerciseDescription: this.exercisesList[i]['Description']};
+            exerciseMap.set(this.exercisesList[i]['Name'], current);
           }
         }
       });
 
-      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, exerciseKeys: this.exerciseKeys});
+      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, exerciseKeys: this.exerciseKeys, request: exercisesString, map: exerciseMap});
     }
   }
 

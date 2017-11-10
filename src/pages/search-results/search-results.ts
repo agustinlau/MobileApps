@@ -5,6 +5,7 @@ import { AddToWorkoutModal } from "./add-to-workout-modal"
 import {Http, RequestOptions, Headers} from "@angular/http";
 import { HttpParams, HttpClient, HttpClientModule} from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import {DescriptionPage} from "./description";
 
 @Component({
   selector: 'page-search-results',
@@ -13,31 +14,37 @@ import 'rxjs/add/operator/map';
 export class SearchResultsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
-
+    // this.getExerciseNames();
   }
+
+  public map = this.navParams.get('map');
+  exerciseNames = [];
+
+  public request = this.navParams.get('request');
+  exercisesList: any;
 
   public exercisesResults = this.navParams.get('exercises');
   public exerciseKeys = this.navParams.get('exerciseKeys');
 
-  // getDescriptions(exerciseKeys) {
-  //
-  //   this.httpClient.get('http://mas-server.herokuapp.com/exercises').subscribe(data => {
-  //
-  //   });
+  // getExerciseNames() {
+  //   console.log(this.map.keys());
+  //   for (var name in this.map.keys()) {
+  //     // console.log(name);
+  //     this.exerciseNames.push(name);
+  //   }
+  //   return this.exerciseNames;
   // }
 
-
-
-  // exercises = [
-  //   'Hammer Curls',
-  //   'Bicep curls (12 reps, 3 sets)',
-  //   'Rope jumps (35 seconds)',
-  // ];
+  goToDescription(name) {
+    console.log(this.map.get(name).exerciseDescription);
+    this.navCtrl.push(DescriptionPage, {map: this.map, exerciseName: name, exerciseDescription: this.map.get(name).exerciseDescription});
+  }
 
 
   public exercisesSelected = [
 
   ];
+
 
   changeSelected(exercise) {
     // console.log(this.exercisesSelected);

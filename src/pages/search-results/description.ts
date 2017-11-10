@@ -13,15 +13,18 @@ import 'rxjs/add/operator/map';
 export class DescriptionPage {
 
   public exerciseKeys = [];
+  public name = this.navParams.get('exerciseName');
+  public description = this.navParams.get('exerciseDescription');
+  public map = this.navParams.get('map');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
-
+    console.log(name);
   }
 
-  seeDescription() {
+  addToWorkout() {
 
-    this.navCtrl.push(DescriptionPage, {
-      exercises: this.exerciseKeys
+    this.navCtrl.push(AddToWorkoutModal, {
+      exercise: this.name, map: this.map
     });
   }
 }
