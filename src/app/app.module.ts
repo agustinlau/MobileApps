@@ -16,6 +16,7 @@ import { GlobalService } from "../global-service";
 import { CreateWorkoutPage } from "../pages/create-workout/create-workout"
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
+import { DescriptionPage } from "../pages/search-results/description";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
     HomePage,
     TabsPage,
     SearchResultsPage,
+    DescriptionPage,
     AddToWorkoutModal,
     CreateWorkoutPage
   ],
@@ -42,6 +44,7 @@ import { HttpClientModule } from "@angular/common/http";
     HomePage,
     TabsPage,
     SearchResultsPage,
+    DescriptionPage,
     AddToWorkoutModal,
     CreateWorkoutPage
   ],
