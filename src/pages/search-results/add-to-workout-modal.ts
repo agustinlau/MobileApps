@@ -15,6 +15,7 @@ export class AddToWorkoutModal {
 
   public workoutKeys;
   public workouts;
+  public exercisesList = [];
 
   public selectedKey;
 
@@ -35,10 +36,23 @@ export class AddToWorkoutModal {
 
   // Updates the Firebase with the new exercises
   addToWorkout(uuid: string, exercise: string) {
-    const pollRef: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
-
-    pollRef.update({
-      exercises: exercise
+    const ref: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
+    ref.on('value', snapshot => {
+      var newPost = snapshot.val();
+      console.log(newPost);
+      console.log(newPost['exercises']);
+      var exercises = newPost['exercises'];
+      if (exercises == null) {
+        this.exercisesList.push(exercise);
+      } else {
+        for (var i = 0; i < exercises.length; i++) {
+          this.exercisesList.push(exercises[i]);
+        }
+        this.exercisesList.push(exercise);
+      }
+    });
+    ref.update({
+      exercises: this.exercisesList
     });
     this.navCtrl.pop();
     let toast = this.toastCtrl.create({
