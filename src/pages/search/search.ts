@@ -11,14 +11,8 @@ import 'rxjs/add/operator/map';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-  searchResultsPage = SearchResultsPage;
-  exercisesList: any;
+  exercisesList: any; // raw results from the api call
   exercises = [];
-  exerciseKeys = [];
-
-
-
-
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public http: Http, public httpClient: HttpClient) {
 
@@ -34,6 +28,7 @@ export class SearchPage {
       toast.present();
     } else {
 
+      // Create request using user input
       var exercisesString = "/?equipment=";
       for (var i = 0; i < equipment.length; i++) {
         exercisesString = exercisesString + equipment[i];
@@ -41,16 +36,13 @@ export class SearchPage {
           exercisesString = exercisesString + ",";
         }
       }
-      console.log(exercisesString);
 
       // TODO: Make api call with given inputs and push the results to the next page
 
-      let params = new HttpParams();
-      params.append('equipment', 'Dumbbell');
+      // let params = new HttpParams();
+      // params.append('equipment', 'Dumbbell');
 
-      // 'http://swapi.co/api/films'
-      // https://www.reddit.com/r/gifs/top/.json
-
+      // Map exercise name to its exercise information
       type Exercise = { exerciseId: number; exerciseName: string; exerciseDescription: string; };
       let exerciseMap : Map<string, Exercise> = new Map<string, Exercise>();
 
@@ -59,18 +51,19 @@ export class SearchPage {
         // console.log('data: ', data);
         this.exercisesList = data;
         for (var i = 0; i < this.exercisesList.length; i++) {
-          // console.log(this.exercisesList[i]['Name']);
           if (this.exercisesList[i]['Require_Spotter'] == 0) {
-            this.exercises.push(this.exercisesList[i]['Name']);
-            this.exerciseKeys.push(this.exercisesList[i]['Workout_Id']);
 
+            // Add exercise name to list
+            this.exercises.push(this.exercisesList[i]['Name']);
+
+            // Add exercise to map
             var current : Exercise = {exerciseId: this.exercisesList[i]['Workout_Id'], exerciseName: this.exercisesList[i]['Name'], exerciseDescription: this.exercisesList[i]['Description']};
             exerciseMap.set(this.exercisesList[i]['Name'], current);
           }
         }
       });
 
-      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, exerciseKeys: this.exerciseKeys, request: exercisesString, map: exerciseMap});
+      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, request: exercisesString, map: exerciseMap});
     }
   }
 

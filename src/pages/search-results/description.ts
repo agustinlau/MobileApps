@@ -12,7 +12,6 @@ import 'rxjs/add/operator/map';
 })
 export class DescriptionPage {
 
-  public exerciseKeys = [];
   public name = this.navParams.get('exerciseName');
   public description = this.navParams.get('exerciseDescription');
   public map = this.navParams.get('map');

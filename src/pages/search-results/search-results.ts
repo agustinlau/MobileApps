@@ -21,10 +21,13 @@ export class SearchResultsPage {
   exerciseNames = [];
 
   public request = this.navParams.get('request');
-  exercisesList: any;
 
-  public exercisesResults = this.navParams.get('exercises');
-  public exerciseKeys = this.navParams.get('exerciseKeys');
+  public exercisesNames = this.navParams.get('exercises');
+
+  goToDescription(name) {
+    console.log(this.map.get(name).exerciseDescription);
+    this.navCtrl.push(DescriptionPage, {map: this.map, exerciseName: name, exerciseDescription: this.map.get(name).exerciseDescription});
+  }
 
   // getExerciseNames() {
   //   console.log(this.map.keys());
@@ -35,43 +38,5 @@ export class SearchResultsPage {
   //   return this.exerciseNames;
   // }
 
-  goToDescription(name) {
-    console.log(this.map.get(name).exerciseDescription);
-    this.navCtrl.push(DescriptionPage, {map: this.map, exerciseName: name, exerciseDescription: this.map.get(name).exerciseDescription});
-  }
-
-
-  public exercisesSelected = [
-
-  ];
-
-
-  changeSelected(exercise) {
-    // console.log(this.exercisesSelected);
-    if (this.exercisesSelected.indexOf(exercise) < 0) {
-      this.exercisesSelected.push(exercise);
-    } else {
-      var index = this.exercisesSelected.indexOf(exercise);
-      console.log(index);
-      if (index > -1) {
-        this.exercisesSelected.splice(index, 1);
-      }
-    }
-
-    console.log(this.exercisesSelected);
-  }
-
-
-  addToWorkout() {
-
-    this.navCtrl.push(AddToWorkoutModal, {
-      exercises: this.exercisesSelected
-    });
-  }
-
-  // // Disables constant reloading
-  // customTrackBy(index: number, obj: any): any {
-  //   return index;
-  // }
 
 }
