@@ -18,7 +18,7 @@ export class SearchResultsPage {
   }
 
   public map = this.navParams.get('map');
-  exerciseNames = [];
+  // exerciseNames = [];
 
   public request = this.navParams.get('request');
 
@@ -26,7 +26,12 @@ export class SearchResultsPage {
 
   goToDescription(name) {
     console.log(this.map.get(name).exerciseDescription);
-    this.navCtrl.push(DescriptionPage, {map: this.map, exerciseName: name, exerciseDescription: this.map.get(name).exerciseDescription});
+    this.navCtrl.push(DescriptionPage, {map: this.map,
+                                                exerciseName: name,
+                                                exerciseDescription: this.map.get(name).exerciseDescription,
+                                                exerciseType: this.map.get(name).exerciseType,
+                                                exerciseMuscles: this.map.get(name).exerciseMuscles}
+    );
   }
 
   // getExerciseNames() {

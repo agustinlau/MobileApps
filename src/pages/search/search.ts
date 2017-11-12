@@ -43,7 +43,11 @@ export class SearchPage {
       // params.append('equipment', 'Dumbbell');
 
       // Map exercise name to its exercise information
-      type Exercise = { exerciseId: number; exerciseName: string; exerciseDescription: string; };
+      type Exercise = { exerciseId: number;
+                        exerciseName: string;
+                        exerciseDescription: string;
+                        exerciseType: string;
+                        exerciseMuscles: string; };
       let exerciseMap : Map<string, Exercise> = new Map<string, Exercise>();
 
       this.httpClient.get('http://mas-server.herokuapp.com/exercises' + exercisesString)
@@ -57,7 +61,11 @@ export class SearchPage {
             this.exercises.push(this.exercisesList[i]['Name']);
 
             // Add exercise to map
-            var current : Exercise = {exerciseId: this.exercisesList[i]['Workout_Id'], exerciseName: this.exercisesList[i]['Name'], exerciseDescription: this.exercisesList[i]['Description']};
+            var current : Exercise = { exerciseId: this.exercisesList[i]['Workout_Id'],
+                                       exerciseName: this.exercisesList[i]['Name'],
+                                       exerciseDescription: this.exercisesList[i]['Description'],
+                                       exerciseType: this.exercisesList[i]['Type'],
+                                       exerciseMuscles: this.exercisesList[i]['Muscles'] };
             exerciseMap.set(this.exercisesList[i]['Name'], current);
           }
         }

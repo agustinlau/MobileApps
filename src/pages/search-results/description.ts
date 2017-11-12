@@ -14,7 +14,10 @@ export class DescriptionPage {
 
   public name = this.navParams.get('exerciseName');
   public description = this.navParams.get('exerciseDescription');
+  public type = this.navParams.get('exerciseType');
+  public muscles = this.navParams.get('exerciseMuscles');
   public map = this.navParams.get('map');
+  // public type = this.map.get(name).exerciseType;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
     console.log(name);
