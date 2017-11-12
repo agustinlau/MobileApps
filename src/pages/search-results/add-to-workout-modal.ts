@@ -22,7 +22,8 @@ export class AddToWorkoutModal {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, public toastCtrl: ToastController, public params: NavParams) {
   }
 
-  public exerciseSelected = this.params.get('exercise');
+  public exerciseSelected = this.params.get('exerciseName');
+  public exerciseSelectedId = this.params.get('exerciseId');
 
   ionViewDidLoad() {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts');
@@ -35,7 +36,7 @@ export class AddToWorkoutModal {
   }
 
   // Updates the Firebase with the new exercises
-  addToWorkout(uuid: string, exercise: string) {
+  addToWorkout(uuid: string, exerciseName: string) {
     const ref: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
     ref.on('value', snapshot => {
       var newPost = snapshot.val();
@@ -43,12 +44,12 @@ export class AddToWorkoutModal {
       console.log(newPost['exercises']);
       var exercises = newPost['exercises'];
       if (exercises == null) {
-        this.exercisesList.push(exercise);
+        this.exercisesList.push(exerciseName);
       } else {
         for (var i = 0; i < exercises.length; i++) {
           this.exercisesList.push(exercises[i]);
         }
-        this.exercisesList.push(exercise);
+        this.exercisesList.push(exerciseName);
       }
     });
     ref.update({

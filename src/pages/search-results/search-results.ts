@@ -24,14 +24,27 @@ export class SearchResultsPage {
 
   public exercisesNames = this.navParams.get('exercises');
 
+  // sets: any;
+  // reps: any;
+
   goToDescription(name) {
-    console.log(this.map.get(name).exerciseDescription);
-    this.navCtrl.push(DescriptionPage, {map: this.map,
-                                                exerciseName: name,
-                                                exerciseDescription: this.map.get(name).exerciseDescription,
-                                                exerciseType: this.map.get(name).exerciseType,
-                                                exerciseMuscles: this.map.get(name).exerciseMuscles}
-    );
+    // console.log(this.map.get(name).exerciseDescription);
+    // this.httpClient.get('http://mas-server.herokuapp.com/specific/?id=' + this.map.get(this.name).exerciseId)
+    //   .subscribe(data => {
+    //     // console.log(data[0]['Reps']);
+    //     this.reps = data[0]['Reps'];
+    //     this.sets = data[0]['Sets'];
+    //   });
+
+    this.navCtrl.push(DescriptionPage, {
+      map: this.map,
+      exerciseName: name,
+      exerciseDescription: this.map.get(name).exerciseDescription,
+      exerciseType: this.map.get(name).exerciseType,
+      exerciseMuscles: this.map.get(name).exerciseMuscles,
+      // sets: this.sets,
+      // reps: this.reps
+    });
   }
 
   // getExerciseNames() {
