@@ -39,9 +39,6 @@ export class SearchPage {
 
       // TODO: Make api call with given inputs and push the results to the next page
 
-      // let params = new HttpParams();
-      // params.append('equipment', 'Dumbbell');
-
       // Map exercise name to its exercise information
       type Exercise = { exerciseId: number;
                         exerciseName: string;
@@ -71,7 +68,7 @@ export class SearchPage {
         }
       });
 
-      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, request: exercisesString, map: exerciseMap});
+      this.navCtrl.push(SearchResultsPage, {exercises: this.exercises, map: exerciseMap});
     }
   }
 
