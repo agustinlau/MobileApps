@@ -1,7 +1,5 @@
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController, ViewController, NavParams, ToastController} from 'ionic-angular';
-import { GlobalService } from "../../global-service";
-import {SearchResultsPage} from "./search-results";
 
 import * as firebase from 'firebase';
 
@@ -10,8 +8,6 @@ import * as firebase from 'firebase';
   templateUrl: 'add-to-workout-modal.html'
 })
 export class AddToWorkoutModal {
-
-  // searchResultsPage = SearchResultsPage;
 
   public workoutKeys;
   public workouts;
@@ -76,9 +72,5 @@ export class AddToWorkoutModal {
   cancel() {
     this.navCtrl.pop();
   }
-
-  // items = this.globalService.getItems();
-
-
 
 }
