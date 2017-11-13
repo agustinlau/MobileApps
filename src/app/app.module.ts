@@ -17,6 +17,7 @@ import { CreateWorkoutPage } from "../pages/create-workout/create-workout"
 import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
 import { DescriptionPage } from "../pages/search-results/description";
+import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DescriptionPage } from "../pages/search-results/description";
     SearchResultsPage,
     DescriptionPage,
     AddToWorkoutModal,
-    CreateWorkoutPage
+    CreateWorkoutPage,
+    WorkoutDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { DescriptionPage } from "../pages/search-results/description";
     SearchResultsPage,
     DescriptionPage,
     AddToWorkoutModal,
-    CreateWorkoutPage
+    CreateWorkoutPage,
+    WorkoutDetailsPage
   ],
   providers: [
     StatusBar,

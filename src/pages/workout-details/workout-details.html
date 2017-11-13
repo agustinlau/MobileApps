@@ -1,39 +1,36 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Search Results
+      {{name}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+  <ion-card ion-item *ngFor="let exercise of exercises">
     <!--<img src="img/nin-live.png"/>-->
     <ion-card-content>
       <ion-card-title>
-        {{name}}
+        {{exercise[1]}}
       </ion-card-title>
       <p>
-        Exercise Type: {{type}}
+        Exercise Type: {{exercise[3]}}
       </p>
       <p>
-        Target Muscles: {{muscles}}
+        Target Muscles: {{exercise[4]}}
       </p>
       <p>
-        Sets: {{sets}}
+        Sets: {{exercise[5]}}
       </p>
       <p>
-        Reps: {{reps}}
+        Reps: {{exercise[6]}}
       </p>
       <p>
         Instructions:
-        {{description}}
+        {{exercise[2]}}
       </p>
 
     </ion-card-content>
   </ion-card>
 
-  <div text-center>
-  <button ion-button outline (click)="addToWorkout()">Add to Workout</button>
-  </div>
 </ion-content>

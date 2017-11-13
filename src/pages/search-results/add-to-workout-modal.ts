@@ -23,7 +23,12 @@ export class AddToWorkoutModal {
   }
 
   public exerciseSelected = this.params.get('exerciseName');
-  public exerciseSelectedId = this.params.get('exerciseId');
+  public exerciseId = this.params.get('exerciseId');
+  public description = this.params.get('exerciseDescription');
+  public type = this.params.get('exerciseType');
+  public muscles = this.params.get('exerciseMuscles');
+  public sets = this.params.get('exerciseSets');
+  public reps = this.params.get('exerciseReps');
 
   ionViewDidLoad() {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts');
@@ -36,20 +41,21 @@ export class AddToWorkoutModal {
   }
 
   // Updates the Firebase with the new exercises
-  addToWorkout(uuid: string, exerciseName: string) {
+  addToWorkout(uuid: string, exerciseId: string) {
     const ref: firebase.database.Reference = firebase.database().ref('/workouts/' + uuid);
     ref.on('value', snapshot => {
       var newPost = snapshot.val();
       console.log(newPost);
       console.log(newPost['exercises']);
       var exercises = newPost['exercises'];
+      var list = [exerciseId, this.exerciseSelected, this.description, this.type, this.muscles, this.sets, this.reps];
       if (exercises == null) {
-        this.exercisesList.push(exerciseName);
+        this.exercisesList.push(list);
       } else {
         for (var i = 0; i < exercises.length; i++) {
           this.exercisesList.push(exercises[i]);
         }
-        this.exercisesList.push(exerciseName);
+        this.exercisesList.push(list);
       }
     });
     ref.update({

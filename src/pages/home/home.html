@@ -11,7 +11,7 @@
 
 <ion-content padding>
   <ion-list inset>
-    <button ion-item *ngFor="let key of workoutKeys" (click)="itemSelected(workouts[key].name)">
+    <button ion-item *ngFor="let key of workoutKeys" (click)="itemSelected(workouts[key].name, workouts[key].exercises)">
       {{ workouts[key].name }}
     </button>
   </ion-list>

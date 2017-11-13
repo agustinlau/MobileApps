@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import {CreateWorkoutPage} from "../create-workout/create-workout";
+import { CreateWorkoutPage } from "../create-workout/create-workout";
+import { WorkoutDetailsPage } from "../workout-details/workout-details";
 
 @Component({
   selector: 'page-home',
@@ -16,6 +17,7 @@ export class HomePage {
   public workoutKeys;
 
   createWorkoutPage = CreateWorkoutPage;
+  workoutDetailsPage = WorkoutDetailsPage;
   constructor(public navCtrl: NavController) {
 
   }
@@ -45,8 +47,9 @@ export class HomePage {
   //   '15 Intense Minutes',
   // ];
 
-  itemSelected(item: string) {
+  itemSelected(name:string, item: string) {
     console.log("Selected Item", item);
+    this.navCtrl.push(WorkoutDetailsPage, {workoutName: name, idList: item, exercises: item});
   }
 
   // getItems() {
