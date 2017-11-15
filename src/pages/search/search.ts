@@ -20,9 +20,9 @@ export class SearchPage {
 
   search(workoutType: string, equipment: string, difficulty: string) {
     this.exercises = [];
-    if (workoutType == null && equipment == null && difficulty == null) {
+    if (/*workoutType == null && */equipment == null/* && difficulty == null*/) {
       let toast = this.toastCtrl.create({
-        message: "Must fill out at least some search criteria",
+        message: "Must fill out missing search criteria",
         duration: 3000
       });
       toast.present();
