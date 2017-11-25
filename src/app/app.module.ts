@@ -18,6 +18,7 @@ import { HttpModule } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
 import { DescriptionPage } from "../pages/search-results/description";
 import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
+import {CreateEventPage} from "../pages/create-event/create-event";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
     DescriptionPage,
     AddToWorkoutModal,
     CreateWorkoutPage,
-    WorkoutDetailsPage
+    WorkoutDetailsPage,
+    CreateEventPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
     DescriptionPage,
     AddToWorkoutModal,
     CreateWorkoutPage,
-    WorkoutDetailsPage
+    WorkoutDetailsPage,
+    CreateEventPage
   ],
   providers: [
     StatusBar,

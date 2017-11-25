@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Event</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Event Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <!--<ion-item-divider color="light" clear>Exercises</ion-item-divider>-->
+
+    <!--<ion-item *ngFor="let option of options; let i = index; trackBy: customTrackBy">-->
+    <!--<ion-label stacked>Exercise</ion-label>-->
+    <!--<ion-input type="text" [(ngModel)]="options[i]">{{option}}</ion-input>-->
+    <!--<button ion-button clear item-end icon-only color="dark" (click)="deleteOption(option)">-->
+    <!--<ion-icon name="close"></ion-icon>-->
+    <!--</button>-->
+    <!--</ion-item>-->
+
+  </ion-list>
+
+  <!--<div text-center>-->
+  <!--<button ion-button outline (click)="addOption()">-->
+  <!--Add Exercise-->
+  <!--</button>-->
+  <!--</div>-->
+
+  <div text-center>
+    <button ion-button outline (click)="createEvent(name)">Create</button>
+  </div>
+
+</ion-content>
