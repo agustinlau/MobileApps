@@ -44,7 +44,8 @@ export class SearchPage {
                         exerciseName: string;
                         exerciseDescription: string;
                         exerciseType: string;
-                        exerciseMuscles: string; };
+                        exerciseMuscles: string;
+                        exercisePhoto: any};
       let exerciseMap : Map<string, Exercise> = new Map<string, Exercise>();
 
       this.httpClient.get('http://mas-server.herokuapp.com/exercises' + exercisesString)
@@ -62,7 +63,8 @@ export class SearchPage {
                                        exerciseName: this.exercisesList[i]['Name'],
                                        exerciseDescription: this.exercisesList[i]['Description'],
                                        exerciseType: this.exercisesList[i]['Type'],
-                                       exerciseMuscles: this.exercisesList[i]['Muscles'] };
+                                       exerciseMuscles: this.exercisesList[i]['Muscles'],
+                                       exercisePhoto: this.exercisesList[i]['Photo']['data']};
             exerciseMap.set(this.exercisesList[i]['Name'], current);
           }
         }

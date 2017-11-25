@@ -24,6 +24,7 @@ export class SearchResultsPage {
       exerciseDescription: this.map.get(name).exerciseDescription,
       exerciseType: this.map.get(name).exerciseType,
       exerciseMuscles: this.map.get(name).exerciseMuscles,
+      exercisePhoto: this.map.get(name).exercisePhoto
     });
   }
 }

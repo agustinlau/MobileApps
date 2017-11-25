@@ -18,6 +18,7 @@ export class DescriptionPage {
   public map = this.navParams.get('map');
   reps: any;
   sets: any;
+  public photo = this.navParams.get('exercisePhoto');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
     // console.log(name);
@@ -50,7 +51,8 @@ export class DescriptionPage {
       exerciseDescription: this.description,
       exerciseMuscles: this.muscles,
       exerciseReps: this.reps,
-      exerciseSets: this.sets
+      exerciseSets: this.sets,
+      exercisePhoto: this.photo
     });
   }
 }

@@ -25,6 +25,7 @@ export class AddToWorkoutModal {
   public muscles = this.params.get('exerciseMuscles');
   public sets = this.params.get('exerciseSets');
   public reps = this.params.get('exerciseReps');
+  public photo = this.params.get('exercisePhoto');
 
   ionViewDidLoad() {
     const pollRef: firebase.database.Reference = firebase.database().ref('/workouts');
@@ -44,7 +45,7 @@ export class AddToWorkoutModal {
       console.log(newPost);
       console.log(newPost['exercises']);
       var exercises = newPost['exercises'];
-      var list = [exerciseId, this.exerciseSelected, this.description, this.type, this.muscles, this.sets, this.reps];
+      var list = [exerciseId, this.exerciseSelected, this.description, this.type, this.muscles, this.sets, this.reps, this.photo];
       if (exercises == null) {
         this.exercisesList.push(list);
       } else {
