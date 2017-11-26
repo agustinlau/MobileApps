@@ -64,7 +64,7 @@ export class SearchPage {
                                        exerciseDescription: this.exercisesList[i]['Description'],
                                        exerciseType: this.exercisesList[i]['Type'],
                                        exerciseMuscles: this.exercisesList[i]['Muscles'],
-                                       exercisePhoto: this.exercisesList[i]['Photo']['data']};
+                                       exercisePhoto: this.exercisesList[i]['Link']};
             exerciseMap.set(this.exercisesList[i]['Name'], current);
           }
         }
