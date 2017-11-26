@@ -21,6 +21,7 @@ import {WorkoutDetailsPage} from "../pages/workout-details/workout-details";
 import {CreateEventPage} from "../pages/create-event/create-event";
 import {LoginPage} from "../pages/login/login";
 import {SignupPage} from "../pages/signup/signup";
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import {SignupPage} from "../pages/signup/signup";
     WorkoutDetailsPage,
     CreateEventPage,
     LoginPage,
-    SignupPage
+    SignupPage,
   ],
   imports: [
     BrowserModule,
@@ -58,13 +59,14 @@ import {SignupPage} from "../pages/signup/signup";
     WorkoutDetailsPage,
     CreateEventPage,
     LoginPage,
-    SignupPage
+    SignupPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     [GlobalService],
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}

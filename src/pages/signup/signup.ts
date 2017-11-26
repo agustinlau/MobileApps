@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController} from 'ionic-angular';
+import {AlertController, NavController, ToastController, LoadingController, Loading} from 'ionic-angular';
 import { TabsPage } from "../tabs/tabs";
 import * as firebase from 'firebase';
 
 import {LoginPage} from "../login/login";
+import {AuthProvider} from "../../providers/auth/auth";
 
 
 @Component({
@@ -12,29 +13,33 @@ import {LoginPage} from "../login/login";
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  public loading: Loading;
+
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public authProvider: AuthProvider) {
 
   }
 
-  signup(username, email, password) {
-    let controller = this.toastCtrl;
-    let authenticated: boolean = true;
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      authenticated = false;
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      let toast = controller.create({
-        message: errorMessage,
-        duration: 2500
+  signupUser(username, email, password) {
+    this.authProvider.signupUser(email, password)
+      .then(() => {
+        this.loading.dismiss().then( () => {
+          this.navCtrl.setRoot(LoginPage);
+        });
+      }, (error) => {
+        this.loading.dismiss().then( () => {
+          let alert = this.alertCtrl.create({
+            message: error.message,
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present();
+        });
       });
-      toast.present();
-    });
-
-    // if (authenticated == true) {
-    //   this.navCtrl.push(LoginPage);
-    // }
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
   }
 }

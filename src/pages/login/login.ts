@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController} from 'ionic-angular';
+import {NavController, ToastController, Loading, LoadingController, AlertController} from 'ionic-angular';
 import { TabsPage } from "../tabs/tabs";
-import { HomePage} from "../home/home";
-import * as firebase from 'firebase';
-import { CreateWorkoutPage } from "../create-workout/create-workout";
-import { WorkoutDetailsPage } from "../workout-details/workout-details";
+
 import {SignupPage} from "../signup/signup";
+import {AuthProvider} from "../../providers/auth/auth";
 
 @Component({
   selector: 'page-login',
@@ -13,33 +11,38 @@ import {SignupPage} from "../signup/signup";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+  public loading: Loading;
+
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController, public authProvider: AuthProvider, public loadingCtrl: LoadingController) {
 
   }
 
-  login(email, password) {
-    let controller = this.toastCtrl;
-    let authenticated: boolean = true;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      authenticated = false;
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
-      let toast = controller.create({
-        message: errorMessage,
-        duration: 2500
-      });
-      toast.present();
-    });
-
-    // if (authenticated == true) {
-    //   this.navCtrl.push(TabsPage);
-    // }
-  }
-
-  goToSignUp() {
+  goToSignUp(email, password) {
     this.navCtrl.push(SignupPage);
   }
+
+  loginUser(email, password) {
+    this.authProvider.loginUser(email, password)
+      .then( authData => {
+        this.loading.dismiss().then( () => {
+          this.navCtrl.setRoot(TabsPage);
+        });
+      }, error => {
+        this.loading.dismiss().then( () => {
+          let alert = this.alertCtrl.create({
+            message: error.message,
+            buttons: [
+              {
+                text: "Ok",
+                role: 'cancel'
+              }
+            ]
+          });
+          alert.present();
+        });
+      });
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+  }
+
 }
