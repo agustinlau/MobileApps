@@ -22,6 +22,8 @@ import {CreateEventPage} from "../pages/create-event/create-event";
 import {LoginPage} from "../pages/login/login";
 import {SignupPage} from "../pages/signup/signup";
 import { AuthProvider } from '../providers/auth/auth';
+import {CreateExercisePage} from "../pages/create-exercise/create-exercise";
+import {EventDetailsPage} from "../pages/event-details/event-details";
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { AuthProvider } from '../providers/auth/auth';
     CreateEventPage,
     LoginPage,
     SignupPage,
+    CreateExercisePage,
+    EventDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,8 @@ import { AuthProvider } from '../providers/auth/auth';
     CreateEventPage,
     LoginPage,
     SignupPage,
+    CreateExercisePage,
+    EventDetailsPage
   ],
   providers: [
     StatusBar,

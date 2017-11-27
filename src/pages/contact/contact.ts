@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 import {CreateEventPage} from "../create-event/create-event";
+import {EventDetailsPage} from "../event-details/event-details";
 import { CreateWorkoutPage } from "../create-workout/create-workout";
 import { WorkoutDetailsPage } from "../workout-details/workout-details";
 
@@ -34,9 +35,9 @@ export class ContactPage {
   }
 
 
-  itemSelected(name:string, item: string) {
-    console.log("Selected Item", name);
-    // this.navCtrl.push(EventDetailsPage, {eventName: name, exercises: item});
+  itemSelected(key:string, name:string, item: string) {
+    console.log("Selected Item", name, key);
+    this.navCtrl.push(EventDetailsPage, {uuid: key, eventName: name, exercises: item});
   }
 
 }

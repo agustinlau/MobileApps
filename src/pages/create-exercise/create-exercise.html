@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Exercise</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Exercise Name</ion-label>
+      <ion-input type="text" [(ngModel)]="exerciseName"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Details</ion-label>
+      <ion-input type="text" [(ngModel)]="details"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Muscles Targeted </ion-label>
+      <ion-input type="text" [(ngModel)]="muscles"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Sets</ion-label>
+      <ion-input type="text" [(ngModel)]="sets"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Reps</ion-label>
+      <ion-input type="text" [(ngModel)]="reps"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <!--<div text-center>-->
+  <!--<button ion-button outline (click)="addOption()">-->
+  <!--Add Exercise-->
+  <!--</button>-->
+  <!--</div>-->
+
+  <div text-center>
+    <button ion-button outline (click)="createExercise(exerciseName, details, muscles, sets, reps)">Create</button>
+    <button ion-button outline (click)="cancel()">Cancel</button>
+
+  </div>
+
+</ion-content>

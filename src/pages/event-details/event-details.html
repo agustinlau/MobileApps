@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{name}}
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addExercise()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card ion-item *ngFor="let exercise of exercises">
+    <!--<img src="img/nin-live.png"/>-->
+    <!--<img src={{exercise[7]}}/>-->
+    <ion-card-content>
+      <ion-card-title>
+        {{exercise[0]}}
+      </ion-card-title>
+      <p>
+        Details: {{exercise[1]}}
+      </p>
+      <p>
+        Target Muscles: {{exercise[2]}}
+      </p>
+      <p>
+        Sets: {{exercise[3]}}
+      </p>
+      <p>
+        Reps: {{exercise[4]}}
+      </p>
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
