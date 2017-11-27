@@ -41,5 +41,10 @@ export class SignupPage {
       });
     this.loading = this.loadingCtrl.create();
     this.loading.present();
+    this.navCtrl.pop();
+  }
+
+  goToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 }

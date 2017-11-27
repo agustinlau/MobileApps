@@ -1,12 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Lift</ion-title>
-  </ion-navbar>
-</ion-header>
+<!--<ion-header>-->
+  <!--<ion-navbar>-->
+    <!--<ion-title text-center>Lift</ion-title>-->
+  <!--</ion-navbar>-->
+<!--</ion-header>-->
 
 <ion-content padding>
 
   <ion-list>
+
+    <img src="../../assets/icon/logo.png"/>
 
     <ion-item>
       <ion-label fixed>Username</ion-label>
@@ -26,4 +28,5 @@
   </ion-list>
 
   <button ion-button block color="primary" (click)="signupUser(username, email, password)">Signup</button>
+  <button (click)="goToLogin()">Go to login!</button>
 </ion-content>
